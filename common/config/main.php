@@ -6,17 +6,16 @@ return [
     ],
     
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    
+
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
-        ],
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=timetobu.mysql.tools;dbname=timetobu_leather',
-            'username' => 'timetobu_leather',
-            'password' => '6nkjjebc',
-            'charset' => 'utf8',
-        ],
+        ],        
+    ],
+    'modules' => [
+       'treemanager' =>  [
+            'class' => '\kartik\tree\Module',
+            // other module settings, refer detailed documentation
+        ]
     ],
 ];
