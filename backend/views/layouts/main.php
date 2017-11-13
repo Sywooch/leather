@@ -27,46 +27,39 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        // ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = ['label' => 'Товары', 'url' => ['/product/index']];
-        $menuItems[] = ['label' => 'Категории', 'url' => ['/category/index']];
+    <div class="container" style="padding-top: 10px;">
+        <div class="row">
+            <div class="col-md-12">
+                <?php if (Yii::$app->user->isGuest): ?>
+                    <?= Html::a('Login', ['site/login'])?><br>
+                    <?= Yii::$app->homeUrl ?>
+                <?php else: ?>
+                    <?php 
+                        echo Html::beginForm(['/site/logout'], 'post');
+                        echo Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',['class' => 'btn btn-link logout']);
+                        echo Html::endForm();
+                    ?>
+                <?php endif ?>
+                
+            </div>
+        </div>
+    </div>    
 
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+    <div class="container-fluid">
+        <?php if (!Yii::$app->user->isGuest) : ?>
+            <div class="col-md-2">
+                <?= Html::a('Категории', ['category/index']) ?>
+                <br>
+                <?= Html::a('Товары', ['product/index']) ?>
+            </div>
+        <?php endif ?>
+        <div class="col-md-10">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= Alert::widget() ?>
+            <?= $content ?>    
+        </div>        
     </div>
 </div>
 

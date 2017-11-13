@@ -17,6 +17,10 @@ class Product extends \yii\db\ActiveRecord
     const STATUS_ACTIVE = 1;
     const STATUS_NOT_DELETED = 1;
     const IMAGE_DEFAULT_SIZE = 'md';
+    const STATUS_NO_IMAGES = 0;
+    const STATUS_HAS_IMAGES = 1;
+    const STATUS_NO_CATEGORIES = 0;
+    const STATUS_HAS_CATEGORIES = 1;
 
     public static function tableName()
     {
@@ -38,6 +42,7 @@ class Product extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['price', 'active', 'delete', 'created_at', 'updated_at'], 'integer'],
+            [['has_images', 'has_categories'], 'integer'],
             [['title', 'slug'], 'string', 'max' => 255],
             [['categories',], 'string'],
             [['files'], 'file', 'maxFiles' => 0, 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
@@ -49,6 +54,11 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasOne(Info::className(), ['product_id'=>'id']);
     }
 
+    public function getMainImage()
+    {
+        return $this->hasOne(Images::className(), ['product_id'=>'id'])->where(['main'=>1]);
+    }
+
     public function getAllImages()
     {
         return $this->hasMany(Images::className(), ['product_id'=>'id']);
@@ -58,11 +68,11 @@ class Product extends \yii\db\ActiveRecord
     {
         $result = false;
 
-        $categories = Html::encode(trim($_POST['category']));
-        $this->title = Html::encode($this->title);
-        $this->slug = H::makeSlug($this->title);
-        $this->delete = self::STATUS_NOT_DELETED;
-        // $this->has_images       = (count($this->files) > 0) ? Status::HAS_IMAGES : Status::NO_IMAGES;
+        $categories         = Html::encode(trim($_POST['category']));
+        $this->title        = Html::encode($this->title);
+        $this->slug         = H::makeSlug($this->title);
+        $this->delete       = self::STATUS_NOT_DELETED;
+        $this->has_images   = (count($this->files) > 0) ? self::STATUS_HAS_IMAGES : self::STATUS_NO_IMAGES;
 
         if ($this->validate()) {
             $result = $this->save();
@@ -90,15 +100,18 @@ class Product extends \yii\db\ActiveRecord
 
     public function updateProduct()
     {
-        $categories = Html::encode(trim($_POST['category']));
-        $this->title = Html::encode($this->title);
-        $this->slug = H::makeSlug($this->title);
-        $this->delete = self::STATUS_NOT_DELETED;
+        $categories     = Html::encode(trim($_POST['category']));
+        $this->title    = Html::encode($this->title);
+        $this->slug     = H::makeSlug($this->title);
+        $this->delete   = self::STATUS_NOT_DELETED;
+        if (count($this->files) > 0 && $this->has_images == self::STATUS_NO_IMAGES) {
+            $this->has_images = self::STATUS_HAS_IMAGES;
+        }
 
         $this->update();
 
         $hasPictures = false;
-        if (count($this->allImages)) {
+        if (count($this->mainImage)) {
             $hasPictures = true;
         }
 
@@ -118,7 +131,6 @@ class Product extends \yii\db\ActiveRecord
 
         return true;
     }
-
 
     // Сохранение данных о выбранных категориях
     private function setCategories($string = '')
@@ -148,8 +160,44 @@ class Product extends \yii\db\ActiveRecord
         }
     }
 
-    public function showImage($imageName, $type = self::IMAGE_DEFAULT_SIZE)
+    public function showImage($params = [])
     {
-        return Images::showImage($this->id, $imageName, $type);
+        $type = isset($params['type']) ? $params['type'] : self::IMAGE_DEFAULT_SIZE;
+        $name = isset($params['name']) && $params['name'] != null ? $params['name'] : null;
+
+        if ($name) {
+            return Images::showImage($this->id, $name, $type);
+        } else {
+            return Images::showNoImage();
+        }        
+    }
+
+    public function showMainImage($type = self::IMAGE_DEFAULT_SIZE)
+    {
+        if ($this->mainImage != null) {
+            return Images::showImage($this->id, $this->mainImage->name, $type);
+        } else {
+            return Images::showNoImage();
+        }
+    }
+
+    public static function findCondition($type, $params=[])
+    {
+        $array = [];
+        switch ($type) {
+            case 'admin':
+                $array = [
+                    'delete'=>self::STATUS_NOT_DELETED
+                ];
+            break;
+            case 'front':
+                $array = [
+                    'delete'    => self::STATUS_NOT_DELETED,
+                    'has_images'=> self::STATUS_HAS_IMAGES,
+                    'active'    => self::STATUS_ACTIVE
+                ];
+            break;            
+        }
+        return $array;
     }
 }

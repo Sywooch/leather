@@ -6,6 +6,7 @@ use Yii;
 use \yii\helpers\FileHelper;
 use yii\imagine\Image;
 use common\models\H;
+use common\models\Product;
 
 
 class ProductImage extends \yii\db\ActiveRecord
@@ -17,7 +18,6 @@ class ProductImage extends \yii\db\ActiveRecord
     {
         return 'product_image';
     }
-
 
     public function rules()
     {
@@ -108,5 +108,66 @@ class ProductImage extends \yii\db\ActiveRecord
         }
 
         return $resultNames;
+    }
+
+    public static function setMainImage($productId, $pictureId)
+    {
+        self::updateAll(['main'=>0], ['product_id'=>(int)$productId]);
+        return self::updateAll(['main'=>1], ['id'=>(int)$pictureId]);
+    }
+
+    public static function deleteImage($productId, $pictureId)
+    {
+        $picture = self::find()->where(['product_id'=>(int)$productId, 'id'=>$pictureId])->one();
+
+        if (!$picture) {
+            return false;
+        }
+
+        return $picture->delete();
+    }
+
+    private function changeMainBeforeDelete()
+    {
+        $p = self::find()->where(['main'=>0, 'product_id'=>$this->product_id])->one();
+        if ($p) {
+            $p->main = 1;
+            return $p->update();
+        } else {
+            $product = Product::findOne(['id'=>$this->product_id]);
+            $product->has_images = Product::STATUS_NO_IMAGES;
+            return $product->update();
+        }
+    }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+        $this->deleteFile();
+        return true;
+    }
+
+
+    public function deleteFile()
+    {
+        $folder = self::getImageFolder('save').$this->product_id.'/';
+        $types  = self::imageTypes();
+        foreach ($types as $type=>$sizes) {
+            $fullFolder = $folder . $type . self::getDelimeter() . $this->name;
+            if (file_exists($fullFolder)) {                
+                unlink($fullFolder);
+            }
+        }
+        
+        if ($this->main == 1) {
+            $this->changeMainBeforeDelete();
+        }
+    }
+
+    public static function showNoImage()
+    {
+        return "/images/common/no_images_product.png";
     }
 }

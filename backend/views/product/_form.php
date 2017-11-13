@@ -20,7 +20,7 @@ use kartik\tree\TreeViewInput;
 <!-- Title -->
 <div class="row">
     <div class="col-md-2">Название</div>
-    <div class="col-md-9">
+    <div class="col-md-10">
         <?= $form->field($product, 'title')->input(['placeholder'=>'Price'])->label(false) ?>
     </div>
 </div>
@@ -44,10 +44,9 @@ use kartik\tree\TreeViewInput;
 <div class="row">
     <div class="col-md-2">Описание товара</div>
     <div class="col-md-10">
-        <?= $form->field($info, 'description')->textArea()->label(false) ?>
+        <?= $form->field($info, 'description')->textArea(['class'=>'summernote', 'rows'=>20])->label(false) ?>
     </div>
 </div>
-
 
 <!-- Images -->
 <div class="row">
@@ -58,10 +57,10 @@ use kartik\tree\TreeViewInput;
     <?php if (!$product->isNewRecord && $product->allImages != null): ?>        
         <div class="col-md-10 col-md-offset-2">
             <?php foreach ($product->allImages as $image): ?>
-                <div class="col-md-2">
-                    <img src="<?= $product->showImage($image->name, 'sm') ?>" alt="" class="img-responsive img-thumbnail">
-                    <br>
-                    <small>Delete</small>
+                <div class="col-md-2" id="product-image-<?= $image->id ?>">
+                    <?php $class = $image->main == 1 ? 'product-main-image' : ''; ?>
+                    <img data-id="<?= $image->id ?>" src="<?= $product->showImage(['name'=>$image->name, 'type'=>'sm']) ?>" alt="" class="img-responsive img-thumbnail product-image-item <?= $class?> ">
+                    <div class="text-center product-image-item-delete" data-id="<?= $image->id ?>">Delete</div>
                 </div>
             <?php endforeach ?>
         </div>
@@ -105,7 +104,7 @@ use kartik\tree\TreeViewInput;
     <div class="col-md-9"></div>
 </div>
 
-
-<?= Html::submitButton( $product->isNewRecord ? 'Save' : 'Update', ['class' => '']) ?>
+<?= Html::submitButton( $product->isNewRecord ? 'Сохранить' : 'Обновить', ['class' => 'btn btn-success']) ?>
+    
 
 <?php ActiveForm::end(); ?>

@@ -1,0 +1,12 @@
+.product-main-image{
+	border: 1px solid red;
+}
+.product-image-item-delete:hover{
+	cursor: pointer;
+	font-weight: bolder;
+}
+.product-image-item-delete{
+	letter-spacing: 0.8px;
+	margin: 0 auto;
+	font-size: 11px;
+}

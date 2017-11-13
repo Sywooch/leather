@@ -8,6 +8,7 @@ use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 
 use common\models\Product;
+use common\models\ProductImage as Image;
 use common\models\H;
 use common\models\ProductInfo as Info;
 
@@ -33,7 +34,8 @@ class ProductController extends Controller
     public function actionIndex()
     { 
     	$products = Product::find()
-    				->where(['active'=>Product::STATUS_ACTIVE, 'delete'=>Product::STATUS_NOT_DELETED])
+    				->where(Product::findCondition('admin'))
+                    ->with(['mainImage'])
     				->all();
 
 
@@ -56,6 +58,10 @@ class ProductController extends Controller
 
     public function actionUpdate()
     {
+        if (Yii::$app->request->isAjax) {
+            return $this->handleAjax();
+        }
+
     	$id = (int)Yii::$app->request->get('id');
     	$product = Product::find()->where(['id' => $id])->with(['allImages'])->one();
 
@@ -80,13 +86,33 @@ class ProductController extends Controller
     	return $this->render('update', compact('product', 'info'));	
     }
 
-    public function handleAjax()
-    {
-    	
-    }
-
     public function actionDelete()
     {
-    	# code...
+        # code...
     }
+
+    public function handleAjax()
+    {
+    	\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $result = ['msg'=>'Failed', 'status'=>false];
+
+        $action = Yii::$app->request->post('action');
+        $pId = (int)Yii::$app->request->get('id');
+        switch ($action) {
+            case 'change-main-image':
+                if(Image::setMainImage((int)$pId, (int)Yii::$app->request->post('pictureId'))){
+                    $result = ['msg'=>'Success', 'status'=>true];
+                }
+            break;
+            case 'delete-product-image':
+                if(Image::deleteImage((int)$pId, (int)Yii::$app->request->post('pictureId'))){
+                    $result = ['msg'=>'Success', 'status'=>true];
+                }
+            break;
+        }
+
+        return $result;
+    }
+
+    
 }
