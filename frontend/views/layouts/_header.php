@@ -60,7 +60,7 @@
 -->
     <nav class="nk-navbar nk-navbar-full nk-navbar-align-center" id="nk-nav-mobile">
         <div class="nk-navbar-bg">
-            <div class="bg-image" style="background-image: url('assets/images/bg-menu.jpg')"></div>
+            <div class="bg-image" style="background-image: url('/images/common/2.jpg')"></div>
         </div>
         <div class="nk-nav-table">
             <div class="nk-nav-row">

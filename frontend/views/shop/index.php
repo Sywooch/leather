@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6">
-            <div class="bg-image bg-image-parallax" style="background-image: url('/theme/snow/dist/assets/images/home-1.jpg');"></div>
+            <div class="bg-image bg-image-parallax" style="background-image: url('/images/common/1.jpg');"></div>
             <div class="nk-gap-6"></div>
             <div class="nk-gap-6"></div>
             <div class="nk-gap-6"></div>
