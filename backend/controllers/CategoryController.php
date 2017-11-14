@@ -29,4 +29,15 @@ class CategoryController extends Controller
     {
     	return $this->render('index');
     }
+
+    public function beforeAction($action)
+    {
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+        
+        $this->view->registerMetaTag(['name' => 'pageName','content' => $this->id]);
+        $this->view->registerMetaTag(['name' => 'action','content' => $this->action->id]);
+        return true;
+    }
 }

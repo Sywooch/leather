@@ -12,6 +12,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'defaultRoute'=> '/product/index',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -39,10 +40,39 @@ return [
         ],
         
         'urlManager' => [
+            // 'baseUrl'=>'/ecrire',
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY, // используем временный редирект вместо постоянного
+            ],
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'products' => 'product/index',
+                'product/<id:\d+>/update' => 'product/update',
+                'product/create' => 'product/create',
+                'categories' => 'category/index',
             ],
+        ],
+
+        'urlManagerFront' => [
+            'class'=>'\yii\web\UrlManager',
+            'baseUrl'=>'/',
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY, // используем временный редирект вместо постоянного
+            ],
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,            
+        ],
+
+        'formatter' => [
+            'locale' => 'ru-Ru',
+            'dateFormat' => 'd/M/Y',
+            'datetimeFormat' => 'd/M/Y H:i',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => '$',
         ],
         
     ],

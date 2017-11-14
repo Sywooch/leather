@@ -18,7 +18,7 @@
         <div class="container">
             <div class="nk-nav-table">
 
-                <a href="<?= Url::to(['shop/index']) ?>" class="nk-nav-logo">Diano
+                <a href="<?= Url::to(['shop/index']) ?>" class="main-logo nk-nav-logo">Diano
                     <!-- <img src="assets/images/logo.svg" alt="" width="85"> -->
                 </a>
 

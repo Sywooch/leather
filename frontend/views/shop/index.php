@@ -1,4 +1,4 @@
-<?php
+<?php    
     use yii\helpers\Html;
     use yii\helpers\Url;
 ?>
@@ -37,7 +37,7 @@
     <div class="nk-portfolio-list nk-isotope nk-isotope-3-cols">
     	<?php if ($products): ?>
 			<?php foreach ($products as $product): ?>
-				<div class="nk-isotope-item" data-filter="Mockup">
+				<div class="nk-isotope-item" data-filter="2">
 	                <div class="nk-portfolio-item nk-portfolio-item-info-style-1">
 	                    <a href="work-single-3.html" class="nk-portfolio-item-link"></a>
 	                    <div class="nk-portfolio-item-image">

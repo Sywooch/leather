@@ -16,7 +16,8 @@ class ProductInfo extends \yii\db\ActiveRecord
     {
         return [
             [['product_id'], 'integer'],
-            [['description', 'tags', 'materials', 'seo_keywords', 'seo_description'], 'string', 'max' => 255],
+            [['tags', 'materials', 'seo_keywords'], 'string', 'max' => 255],
+            [['description', 'seo_description'], 'string'],
         ];
     }
 }

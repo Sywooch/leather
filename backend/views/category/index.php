@@ -3,7 +3,7 @@
 use kartik\tree\TreeView;
 use kartik\tree\TreeViewInput;
 use common\models\Category;
-
+$this->params['breadcrumbs'][] = 'Управление категориями';
 ?>
 
 <div class="row">
@@ -14,7 +14,7 @@ use common\models\Category;
                 // use the Product model you have in the previous step
                 'query' => Category::find()->addOrderBy('root, lft'), 
                 'headingOptions' => ['label' => 'Categories'],
-                'fontAwesome' => false,     // optional
+                'fontAwesome' => true,     // optional
                 'isAdmin' => true,         // optional (toggle to enable admin mode)
                 'displayValue' => 1,        // initial display value
                 'softDelete' => false,       // defaults to true

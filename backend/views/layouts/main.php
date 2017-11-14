@@ -27,39 +27,50 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <div class="container" style="padding-top: 10px;">
-        <div class="row">
-            <div class="col-md-12">
-                <?php if (Yii::$app->user->isGuest): ?>
-                    <?= Html::a('Login', ['site/login'])?><br>
-                    <?= Yii::$app->homeUrl ?>
-                <?php else: ?>
-                    <?php 
-                        echo Html::beginForm(['/site/logout'], 'post');
-                        echo Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',['class' => 'btn btn-link logout']);
-                        echo Html::endForm();
-                    ?>
-                <?php endif ?>
+    <div class="container-fluid" style="padding-top: 0px;">
+        <div class="row top-header">
+            
+            <?php if (Yii::$app->user->isGuest): ?>
+                <div class="col-md-12"><?= Html::a('Login', ['site/login'])?></div>
+            <?php else: ?>
+                <?php $url = Yii::$app->urlManagerFront->createUrl(['']) ?>
+                <div class="col-md-6 top-header-logo"><?= Html::a('DianoD', $url) ?></div>
                 
-            </div>
+                <div class="div.col-md-6 pull-right">
+                <?php 
+                    echo Html::beginForm(['/site/logout'], 'post');
+                    echo Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',['class' => 'btn btn-link logout']);
+                    echo Html::endForm();
+                ?>
+                </div>
+            <?php endif ?>
+                
         </div>
     </div>    
-
+    <div class="separator"></div>
     <div class="container-fluid">
-        <?php if (!Yii::$app->user->isGuest) : ?>
-            <div class="col-md-2">
-                <?= Html::a('Категории', ['category/index']) ?>
-                <br>
-                <?= Html::a('Товары', ['product/index']) ?>
+        <div class="row">            
+            <?php if (!Yii::$app->user->isGuest) : ?>
+                <div class="col-md-2 layout-left-sidebar">
+                    <div class="sidebar-links">
+                        <ul>
+                            <hr>
+                            <li><?= Html::a('Категории', ['category/index']) ?></li>
+                            <hr>
+                            <li><?= Html::a('Товары', ['product/index']) ?></li>
+                            <hr>
+                        </ul>
+                    </div>                    
+                </div>
+            <?php endif ?>
+            <div class="col-md-10">
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
+                <?= $content ?>        
             </div>
-        <?php endif ?>
-        <div class="col-md-10">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <?= Alert::widget() ?>
-            <?= $content ?>    
-        </div>        
+        </div>
     </div>
 </div>
 

@@ -6,6 +6,8 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use common\models\Product;
 use common\models\Category;
+use common\models\H;
+use frontend\models\ContactForm;
 
 
 class ShopController extends Controller
@@ -28,17 +30,45 @@ class ShopController extends Controller
 
 	public function actionProduct()
 	{
+		$model = new ContactForm();
 		$product = Product::find()
 						->where(Product::findCondition('front'))
 						->andWhere(['id'=>(int)Yii::$app->request->get('id')])
 						->with(['allImages', 'info'])
-						->one();		
+						->one();
 		
-		return $this->render('product', compact('product'));
+        if ($model->load(Yii::$app->request->post())) {
+        	$result = false;
+        	if ($model->validate() && $model->sendEmail(Yii::$app->params['adminEmail'])) {
+        		$result = true;
+        	}
+        	if ($result) {
+        	   Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+        	} else {
+        		Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+        	}
+        	return $this->refresh();            
+        }
+		
+		return $this->render('product', compact('product', 'model'));
 	}
 
 	public function actionContact()
-	{		
-		return $this->render('contact');
+	{
+		$model = new ContactForm();
+        if ($model->load(Yii::$app->request->post())) {
+        	$result = false;
+        	if ($model->validate() && $model->sendEmail(Yii::$app->params['adminEmail'])) {
+        		$result = true;
+        	}
+        	if ($result) {
+        	   Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+        	} else {
+        		Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+        	}
+        	return $this->refresh();            
+        }
+
+		return $this->render('contact', compact('model'));
 	}
 }

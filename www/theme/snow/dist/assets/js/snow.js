@@ -2604,14 +2604,7 @@ function _initPluginFlickity() {
     }
 }
 
-$(document).ready(function(){
-    // var $container = $('.nk-isotope')
-  
-    // $container.isotope({
-    //     itemSelector: '.nk-isotope-item',
-    //     filter: '.Covers'
-    // });
-})
+
 
 /* Isotope */
 function _initPluginIsotope() {
@@ -2624,6 +2617,7 @@ function _initPluginIsotope() {
         var $this = $(this);
         var $grid = $this.isotope({
             itemSelector: '.nk-isotope-item',
+            filter: '[data-filter="2"]'
         });
         $grid.imagesLoaded().progress(function () {
             $grid.isotope('layout');
@@ -2646,7 +2640,6 @@ function _initPluginIsotope() {
                 var filter = $(this).attr('data-filter');
 
                 $(this).addClass('active').siblings().removeClass('active');
-
                 $grid.isotope({
                     filter: filter === '*' ? '' : '[data-filter*=' + filter + ']'
                 });

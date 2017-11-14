@@ -10,3 +10,27 @@
 	margin: 0 auto;
 	font-size: 11px;
 }
+
+.top-header{
+	background-color: black;
+}
+.top-header a, .top-header form button{
+	color: white;
+}
+.top-header-logo{
+	padding-top: 10px;
+}
+
+.separator{
+	margin-top:20px;
+}
+.sidebar-links li{
+	list-style: none;	
+}
+
+.sidebar-links li a{
+	color: black;
+	letter-spacing: 0.8px;
+	padding: 20px 10px 10px 10px;
+
+}

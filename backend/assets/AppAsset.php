@@ -14,6 +14,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'libs/summernote/dist/summernote.css',
+        'libs/fontawesome/css/font-awesome.min.css',
         'css/custom.css',
     ];
     public $js = [

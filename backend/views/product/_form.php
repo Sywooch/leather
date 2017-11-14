@@ -19,14 +19,14 @@ use kartik\tree\TreeViewInput;
 
 <!-- Title -->
 <div class="row">
-    <div class="col-md-2">Название</div>
-    <div class="col-md-10">
+    <div class="col-md-2"><p><b>Название</b></p></div>
+    <div class="col-md-8">
         <?= $form->field($product, 'title')->input(['placeholder'=>'Price'])->label(false) ?>
     </div>
 </div>
 <!-- Price -->
 <div class="row">
-    <div class="col-md-2">Стоимость ($)</div>
+    <div class="col-md-2"><p><b>Стоимость ($)</b></p></div>
     <div class="col-md-3">
         <?= $form->field($product, 'price')->input('number', ['placeholder'=>'Price'])->label(false) ?>
     </div>
@@ -42,16 +42,16 @@ use kartik\tree\TreeViewInput;
 </div>
 <!-- Descritption -->
 <div class="row">
-    <div class="col-md-2">Описание товара</div>
-    <div class="col-md-10">
+    <div class="col-md-2"><p><b>Описание товара</b></p></div>
+    <div class="col-md-8">
         <?= $form->field($info, 'description')->textArea(['class'=>'summernote', 'rows'=>20])->label(false) ?>
     </div>
 </div>
 
 <!-- Images -->
 <div class="row">
-    <div class="col-md-2">Изображения</div>
-    <div class="col-md-10">
+    <div class="col-md-2"><p><b>Изображения</b></p></div>
+    <div class="col-md-8">
         <?= $form->field($product, 'files[]')->fileInput(['multiple' => true, 'accept' => 'image/*'])->label(false) ?>
     </div>
     <?php if (!$product->isNewRecord && $product->allImages != null): ?>        
@@ -115,8 +115,8 @@ use kartik\tree\TreeViewInput;
 
 <!-- Categories -->
 <div class="row">
-    <div class="col-md-2">Категории товара</div>
-    <div class="col-md-9">
+    <div class="col-md-2"><p><b>Категории товара</b></p></div>
+    <div class="col-md-6">
          <?= 
             TreeViewInput::widget([
                 // single query fetch to render the tree
@@ -127,7 +127,7 @@ use kartik\tree\TreeViewInput;
                 'value'          => $product->categories !='' ? $product->categories : null,
                 'asDropdown'     => false,
                 'multiple'       => true,
-                'fontAwesome'    => false,
+                'fontAwesome'    => true,
                 'rootOptions' => [
                     'label'=>'<i class="fa fa-tree"></i>',  // custom root label
                     'class'=>'text-success'
@@ -138,8 +138,9 @@ use kartik\tree\TreeViewInput;
     </div>
 </div>
 
-
+<div class="form-group">
 <?= Html::submitButton( $product->isNewRecord ? 'Сохранить' : 'Обновить', ['class' => 'btn btn-success']) ?>
+</div>
     
 
 <?php ActiveForm::end(); ?>

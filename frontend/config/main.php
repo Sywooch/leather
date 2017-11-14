@@ -12,7 +12,7 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute'=> '/shop/index',
-    'language' => 'ru-RU',
+    'language' => 'en-EN',
     'sourceLanguage' => 'en-EN',
     'components' => [
         'request' => [
@@ -41,9 +41,18 @@ return [
         ],
         
         'urlManager' => [
+            'baseUrl'=>'/',
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY, // используем временный редирект вместо постоянного
+            ],
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                "/" => 'shop/index',
+                "products" => 'shop/catalog',
+                "contact" => 'shop/contact',
+                "<slug:.*>/<id:\d+>" => 'shop/product',
             ],
         ],
         'formatter' => [

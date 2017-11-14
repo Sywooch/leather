@@ -1,0 +1,15 @@
+div.has-error input, div.has-error textarea{
+	border:1px solid #d70101;
+}
+
+p.help-block-error{
+	color: #d70101;
+}
+
+.main-logo{
+	font-size: 23px;
+    letter-spacing: 1px;
+    color: black !important;
+    font-weight: 500;
+    text-decoration: underline;
+}

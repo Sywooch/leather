@@ -1,3 +1,8 @@
+<?php 
+    use yii\bootstrap\ActiveForm;
+    use common\widgets\Alert;
+    use yii\helpers\Html;
+?>
 <!-- START: Contact Info -->
 <div class="container">
     <div class="nk-gap-5 mnt-10"></div>
@@ -22,28 +27,22 @@
             <!-- END: Info -->
         </div>
         <div class="col-lg-7">
-            <!-- START: Form -->
-            <form action="php/contact.php" class="nk-form nk-form-ajax">
-                <div class="row vertical-gap">
-                    <div class="col-md-6">
-                        <input type="text" class="form-control required" name="name" placeholder="Your Name">
+            <?= Alert::widget() ?>
+            <?php $form = ActiveForm::begin(); ?>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <?= $form->field($model, 'name')->textInput() ?>
                     </div>
-                    <div class="col-md-6">
-                        <input type="email" class="form-control required" name="email" placeholder="Your Email">
+                    <div class="col-lg-6">
+                        <?= $form->field($model, 'email')->textInput() ?>    
                     </div>
                 </div>
-
-                <div class="nk-gap-1"></div>
-                <input type="text" class="form-control required" name="title" placeholder="Your Title">
-
-                <div class="nk-gap-1"></div>
-                <textarea class="form-control required" name="message" rows="8" placeholder="Your Comment" aria-required="true"></textarea>
-                <div class="nk-gap-1"></div>
-                <div class="nk-form-response-success"></div>
-                <div class="nk-form-response-error"></div>
-                <button class="nk-btn">Send Message</button>
-            </form>
-            <!-- END: Form -->
+                <?= $form->field($model, 'subject') ?>
+                <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+                <div class="form-group">
+                    <?= Html::submitButton('Send message', ['class' => 'nk-btn', 'name' => 'contact-button']) ?>
+                </div>
+            <?php ActiveForm::end(); ?>
         </div>
     </div>
     <div class="nk-gap-5"></div>

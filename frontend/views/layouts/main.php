@@ -26,7 +26,7 @@ AppAsset::register($this);
 
     <?= $this->render('_header') ?>
     <div class="nk-main">
-        <?= $content ?>        
+        <?= $content ?>
         <footer class="nk-footer">
             <div class="nk-footer-cont">
                 <div class="container text-center">

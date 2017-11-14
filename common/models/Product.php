@@ -240,4 +240,13 @@ class Product extends \yii\db\ActiveRecord
         }
         return $result;
     }
+
+    public function isActive()
+    {
+        if ($this->active != self::STATUS_ACTIVE || $this->has_images == self::STATUS_NO_IMAGES) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

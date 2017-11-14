@@ -10,10 +10,10 @@
             <span class="nk-icon-squares"></span>
         </a>
     </div>
-    <ul class="nk-isotope-filter">     
+    <ul class="nk-isotope-filter nk-isotope-filter nk-isotope-filter-active">     
         <?php for($i=0; $i< count($categories); $i++) : ?>
-            <?php $class = $i == 0 ? 'active' : '' ?>                
-            <li class="<?= $class ?>" data-filter="<?= $categories[$i]->name ?>"><?= $categories[$i]->name ?></li>   
+            <?php $class = $i == 0 ? 'active' : '' ?>
+            <li class="<?= $class?>" data-filter="<?= $categories[$i]->id ?>"><?= $categories[$i]->name ?></li>   
         <?php endfor ?>
     </ul>
     <!-- END: Filter -->
@@ -22,9 +22,9 @@
     
         <?php foreach ($products as $product): ?>
             <?php foreach ($product->cats as $category): ?>
-                <div class="nk-isotope-item" data-filter="<?= $category->name ?>">
+                <div class="nk-isotope-item" data-filter="<?= $category->id ?>">
                     <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-                        <a href="<?= Url::to(['shop/product', 'id'=>$product->id]) ?>" class="nk-portfolio-item-link"></a>
+                        <a href="<?= Url::to(['shop/product', 'slug'=>$product->slug, 'id'=>$product->id]) ?>" class="nk-portfolio-item-link"></a>
                         <div class="nk-portfolio-item-image">
                             <div style="background-image: url('<?= $product->showMainImage('sm') ?>');"></div>
                         </div>

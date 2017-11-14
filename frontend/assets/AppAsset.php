@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'theme/snow/dist/assets/bower_components/prism/themes/prism-tomorrow.css',
         'theme/snow/dist/assets/css/snow.css',
         'theme/snow/dist/assets/css/custom.css',
+        'css/custom_.css',
     ];
     public $js = [
         'theme/snow/dist/assets/bower_components/gsap/src/minified/TweenMax.min.js',
