@@ -42,7 +42,8 @@ class AppAsset extends AssetBundle
         'theme/snow/dist/assets/bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js',
         'theme/snow/dist/assets/bower_components/keymaster/keymaster.js',
         'theme/snow/dist/assets/bower_components/prism/prism.js',
-        'theme/snow/dist/assets/js/snow.min.js',
+        // 'theme/snow/dist/assets/js/snow.min.js',
+        'theme/snow/dist/assets/js/snow.js',
         'theme/snow/dist/assets/js/snow-init.js',
     ];
     public $depends = [

@@ -67,6 +67,52 @@ use kartik\tree\TreeViewInput;
     <?php endif ?>
 </div>
 
+ <!-- Materials -->
+ <div class="row">
+    <div class="col-md-2">
+        <p>
+            <b>Материалы</b>
+            <br>
+            <small>Добавьте материалы из которых состоит Ваш товар.</small>
+            <br>
+            <small class="validation-explain"><i>Допустимы только буквы, цифры и пробелы.</i></small>
+        </p>
+    </div>
+    <div class="col-md-5">
+        <div class="input-group">
+            <input type="text" name="materials" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" name="create-tag" data-type="materials" type="button">Add</button>
+            </span>
+        </div>
+        <p class="materials-tags"></p>
+        <?= $form->field($info, 'materials')->input('hidden')->label(false) ?>
+    </div>
+</div>
+
+<!-- Tags -->
+<div class="row">
+    <div class="col-md-2">
+        <p>
+            <b>Теги</b>
+            <br>
+            <small>Добавьте словосчетания, которые помогут при поиске Вашего товара.</small>
+            <br>
+            <small class="validation-explain"><i>Допустимы только буквы, цифры и пробелы.</i></small>
+        </p>
+    </div>
+    <div class="col-md-5">
+        <div class="input-group">
+            <input type="text" name="tags" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" name="create-tag" data-type="tags" type="button">Add</button>
+            </span>
+        </div>
+        <p class="tags-tags"></p>
+        <?= $form->field($info, 'tags')->input('hidden')->label(false) ?>
+    </div>
+</div>
+
 <!-- Categories -->
 <div class="row">
     <div class="col-md-2">Категории товара</div>
@@ -92,17 +138,6 @@ use kartik\tree\TreeViewInput;
     </div>
 </div>
 
-
-<!-- Tags -->
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-9"></div>
-</div>
-<!-- Materials -->
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-9"></div>
-</div>
 
 <?= Html::submitButton( $product->isNewRecord ? 'Сохранить' : 'Обновить', ['class' => 'btn btn-success']) ?>
     

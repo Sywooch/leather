@@ -2604,17 +2604,26 @@ function _initPluginFlickity() {
     }
 }
 
+$(document).ready(function(){
+    // var $container = $('.nk-isotope')
+  
+    // $container.isotope({
+    //     itemSelector: '.nk-isotope-item',
+    //     filter: '.Covers'
+    // });
+})
+
 /* Isotope */
 function _initPluginIsotope() {
     if (typeof window.Isotope === 'undefined') {
         return;
     }
-    var self = this;
+    var self = this;    
 
     $('.nk-isotope').each(function () {
         var $this = $(this);
         var $grid = $this.isotope({
-            itemSelector: '.nk-isotope-item'
+            itemSelector: '.nk-isotope-item',
         });
         $grid.imagesLoaded().progress(function () {
             $grid.isotope('layout');
@@ -2630,6 +2639,7 @@ function _initPluginIsotope() {
         } else {
             $filter = $this.prev('.nk-isotope-filter');
         }
+
         if ($filter.length) {
             $filter.on('click', '[data-filter]', function (e) {
                 e.preventDefault();

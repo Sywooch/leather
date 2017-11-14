@@ -46,6 +46,14 @@ return [
             'rules' => [
             ],
         ],
+        'formatter' => [
+            'locale' => 'ru-Ru',
+            'dateFormat' => 'd/M/Y',
+            'datetimeFormat' => 'd/M/Y H:i',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => '$',
+        ],
         
     ],
     'params' => $params,

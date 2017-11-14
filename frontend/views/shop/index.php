@@ -1,3 +1,7 @@
+<?php
+    use yii\helpers\Html;
+    use yii\helpers\Url;
+?>
 <!-- START: Digital. Modern. Creative -->
 <div class="container-fluid">
     <div class="row">
@@ -56,6 +60,6 @@
 
 <!-- START: Pagination -->
 <div class="nk-pagination nk-pagination-center">
-    <a href="#">Load More Works</a>
+    <a href="<?= Url::to(['shop/catalog']) ?>">Load More Works</a>
 </div>
 <!-- END: Pagination -->

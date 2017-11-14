@@ -9,6 +9,7 @@ use common\models\ProductInfo as Info;
 use common\models\ProductImage as Images;
 use common\models\H;
 use common\models\ProductCategory as Category;
+use common\models\Category as Categories;
 
 
 
@@ -54,6 +55,12 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasOne(Info::className(), ['product_id'=>'id']);
     }
 
+    public function getCats()
+    {
+        return $this->hasMany(Categories::className(), ['id' => 'category_id'])
+                    ->viaTable('product_category', ['product_id' => 'id']);
+    }
+
     public function getMainImage()
     {
         return $this->hasOne(Images::className(), ['product_id'=>'id'])->where(['main'=>1]);
@@ -61,7 +68,7 @@ class Product extends \yii\db\ActiveRecord
 
     public function getAllImages()
     {
-        return $this->hasMany(Images::className(), ['product_id'=>'id']);
+        return $this->hasMany(Images::className(), ['product_id'=>'id'])->orderBy(['main'=>SORT_DESC]);
     }
 
     public function saveProduct()
@@ -199,5 +206,38 @@ class Product extends \yii\db\ActiveRecord
             break;            
         }
         return $array;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getDescription()
+    {
+        return $this->info->description;
+    }
+
+    public function getPrice()
+    {
+        return Yii::$app->formatter->asCurrency( $this->price );
+    }
+
+    public function getMaterials()
+    {
+        $result = [];
+        if ($this->info != null && $this->info->materials != null) {
+            $result = explode(',', $this->info->materials);
+        }
+        return $result;
+    }
+
+    public function getTags()
+    {
+        $result = [];
+        if ($this->info != null && $this->info->tags != null) {
+            $result = explode(',', $this->info->tags);
+        }
+        return $result;
     }
 }

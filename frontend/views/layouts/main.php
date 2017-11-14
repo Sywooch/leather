@@ -25,23 +25,25 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
     <?= $this->render('_header') ?>
-    <div class="nk-main"><?= $content ?></div>
-    <footer class="nk-footer">
-        <div class="nk-footer-cont">
-            <div class="container text-center">
-                <div class="nk-footer-social">
-                    <ul>
-                        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
-                </div>
+    <div class="nk-main">
+        <?= $content ?>        
+        <footer class="nk-footer">
+            <div class="nk-footer-cont">
+                <div class="container text-center">
+                    <div class="nk-footer-social">
+                        <ul>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
 
-                <div class="nk-footer-text">
-                    <p>2016 &copy; Design by Unvab. Code by nK</p>
+                    <div class="nk-footer-text">
+                        <p>2016 &copy; Design by Unvab. Code by nK</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
 <?php $this->endBody() ?>
 </body>
