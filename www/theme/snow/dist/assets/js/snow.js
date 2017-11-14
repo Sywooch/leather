@@ -2617,7 +2617,7 @@ function _initPluginIsotope() {
         var $this = $(this);
         var $grid = $this.isotope({
             itemSelector: '.nk-isotope-item',
-            filter: '[data-filter="2"]'
+            filter: window.defaultFilter != undefined ? '[data-filter="'+window.defaultFilter+'"]' : '',
         });
         $grid.imagesLoaded().progress(function () {
             $grid.isotope('layout');

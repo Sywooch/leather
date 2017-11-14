@@ -4456,6 +4456,13 @@ img.rounded {
 .nk-box-rounded-4 {
     padding: 72px;
 }
+@media screen and (max-width: 670px) {
+    .nk-box-4,
+    .nk-box-rounded-4 {
+        padding: 0;
+    }
+}
+
 
 .nk-box-rounded,
 .nk-box-rounded-1,

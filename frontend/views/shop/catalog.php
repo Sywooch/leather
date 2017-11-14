@@ -10,11 +10,21 @@
             <span class="nk-icon-squares"></span>
         </a>
     </div>
-    <ul class="nk-isotope-filter nk-isotope-filter nk-isotope-filter-active">     
+    <ul class="nk-isotope-filter nk-isotope-filter nk-isotope-filter-active">
         <?php for($i=0; $i< count($categories); $i++) : ?>
-            <?php $class = $i == 0 ? 'active' : '' ?>
+            <?php 
+                if ($i == 0) {
+                    $defaultFilter = $categories[$i]->id;
+                }
+                if ($categories[$i]->id == $defaultFilter) {
+                    $class = 'active';
+                } else {
+                    $class = '';
+                }
+            ?>
             <li class="<?= $class?>" data-filter="<?= $categories[$i]->id ?>"><?= $categories[$i]->name ?></li>   
         <?php endfor ?>
+        <script>window.defaultFilter = "<?php echo $defaultFilter;?>"</script>
     </ul>
     <!-- END: Filter -->
 

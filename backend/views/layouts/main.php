@@ -51,7 +51,7 @@ AppAsset::register($this);
     <div class="container-fluid">
         <div class="row">            
             <?php if (!Yii::$app->user->isGuest) : ?>
-                <div class="col-md-2 layout-left-sidebar">
+                <div class="col-md-2 hidden-xs hidden-sm layout-left-sidebar">
                     <div class="sidebar-links">
                         <ul>
                             <hr>
@@ -60,7 +60,11 @@ AppAsset::register($this);
                             <li><?= Html::a('Товары', ['product/index']) ?></li>
                             <hr>
                         </ul>
-                    </div>                    
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 layout-left-sidebar">
+                    <?= Html::a('Категории', ['category/index']) ?> ||
+                    <?= Html::a('Товары', ['product/index']) ?>
                 </div>
             <?php endif ?>
             <div class="col-md-10">

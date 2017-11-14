@@ -60,7 +60,7 @@
 -->
     <nav class="nk-navbar nk-navbar-full nk-navbar-align-center" id="nk-nav-mobile">
         <div class="nk-navbar-bg">
-            <div class="bg-image" style="background-image: url('/images/common/2.jpg')"></div>
+            <div class="bg-image" style="background-image: url('/images/common/bg-menu.jpg')"></div>
         </div>
         <div class="nk-nav-table">
             <div class="nk-nav-row">
@@ -68,8 +68,8 @@
                     <div class="nk-nav-header">
 
                         <div class="nk-nav-logo">
-                            <a href="index.html" class="nk-nav-logo">
-                                <img src="assets/images/logo-light.svg" alt="" width="85">
+                            <a href="<?= Url::to(['shop/index']) ?>" class="nk-nav-logo">Diano
+                                <!-- <img src="assets/images/logo-light.svg" alt="" width="85"> -->
                             </a>
                         </div>
 
