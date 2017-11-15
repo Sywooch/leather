@@ -26,6 +26,9 @@
                 <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile">
                     <li><a href="<?= Url::to(['shop/catalog']) ?>">Products</a></li>
                     <li><a href="<?= Url::to(['shop/contact']) ?>">Contact</a></li>
+                    <?php  if (!Yii::$app->user->isGuest) :?>
+                        <li><a href="/ecrire">Admin</a></li>
+                    <?php endif ?>
                 </ul>
 
                 <ul class="nk-nav nk-nav-right nk-nav-icons">

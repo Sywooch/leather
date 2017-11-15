@@ -5,14 +5,14 @@
 <!-- START: Digital. Modern. Creative -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-sm-6">
             <div class="bg-image bg-image-parallax" style="background-image: url('/images/common/1.jpg');"></div>
             <div class="nk-gap-6"></div>
             <div class="nk-gap-6"></div>
             <div class="nk-gap-6"></div>
             <div class="nk-gap-6"></div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-sm-6">
             <div class="nk-gap-6 mnb-10"></div>
 
             <div class="nk-box-4 mw-620">
@@ -37,9 +37,9 @@
     <div class="nk-portfolio-list nk-isotope nk-isotope-3-cols">
     	<?php if ($products): ?>
 			<?php foreach ($products as $product): ?>
-				<div class="nk-isotope-item" data-filter="2">
+				<div class="col-sm-6 nk-isotope-item" data-filter="">
 	                <div class="nk-portfolio-item nk-portfolio-item-info-style-1">
-	                    <a href="work-single-3.html" class="nk-portfolio-item-link"></a>
+	                    <a href="<?= Url::to(['shop/product', 'id'=>$product->id, 'slug'=>$product->slug]) ?>" class="nk-portfolio-item-link"></a>
 	                    <div class="nk-portfolio-item-image">
 	                        <div style="background-image: url('<?= $product->showMainImage('md') ?>');"></div>
 	                    </div>
@@ -60,6 +60,6 @@
 
 <!-- START: Pagination -->
 <div class="nk-pagination nk-pagination-center">
-    <a href="<?= Url::to(['shop/catalog']) ?>">Load More Works</a>
+    <a href="<?= Url::to(['shop/catalog']) ?>">More Works...</a>
 </div>
 <!-- END: Pagination -->
