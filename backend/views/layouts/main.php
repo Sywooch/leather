@@ -5,6 +5,7 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -51,7 +52,7 @@ AppAsset::register($this);
     <div class="container-fluid">
         <div class="row">            
             <?php if (!Yii::$app->user->isGuest) : ?>
-                <div class="col-md-2 hidden-xs hidden-sm layout-left-sidebar">
+                <div class="col-md-2 col-lg-2 hidden-xs hidden-sm layout-left-sidebar">
                     <div class="sidebar-links">
                         <ul>
                             <hr>
@@ -62,12 +63,14 @@ AppAsset::register($this);
                         </ul>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 layout-left-sidebar">
-                    <?= Html::a('Категории', ['category/index']) ?> ||
-                    <?= Html::a('Товары', ['product/index']) ?>
+                <div class="col-xs-12 col-sm-12 hidden-lg hidden-md mobile-layout-left-sidebar">
+                    <ul>
+                        <li><span><a href="<?= Url::to(['category/index']) ?>">Категории</a></span></li>
+                        <li><span><a href="<?= Url::to(['product/index']) ?>">Товары</a></span></li>
+                    </ul>                    
                 </div>
             <?php endif ?>
-            <div class="col-md-10">
+            <div class="col-md-10 col-xs-12 col-sm-12">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
