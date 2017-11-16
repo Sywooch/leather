@@ -125,13 +125,11 @@ class Etsy extends Model
         for ($i=0; $i < count($urls) ; $i++) {
             $name = $productId."_".$i.'.jpg';
             $imageFolder = $folder.'/'.$name;
-            // H::ddd([$imageFolder,$urls[$i]]);
             if ( file_put_contents($imageFolder, file_get_contents($urls[$i])) ) {
                 $names[] = $name;
             } else {
                 die('Cant save - '. $i.'---P_id='.$productId);
             }
-            // var_dump();die();            
         }
         return $names;
     }
@@ -186,10 +184,8 @@ class Etsy extends Model
 
         if ($products) {
             for ($i=0; $i < count($products) ; $i++) { 
-                $images = unserialize($products[$i]->images);
-                // H::ddd($products[$i]->images);
-                $x = json_decode($products[$i]->images,1);
-                // H::ddd($x);
+                $images = json_decode($products[$i]->images,1);
+                H::ddd($images);
                 if (!empty($images)) {
                     $names = $this->saveEtsyImage($images, $products[$i]->result_id);
                 }
