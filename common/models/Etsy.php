@@ -109,7 +109,7 @@ class Etsy extends Model
                 if (!empty($result)) {
                     $p = EtsyProducts::findOne(['etsy_product_id'=>$productId]);
                     if ($p) {
-                        $p->images = serialize($result);
+                        $p->images = json_encode($result);
                         $p->update();
                     }
                 }
@@ -188,7 +188,7 @@ class Etsy extends Model
             for ($i=0; $i < count($products) ; $i++) { 
                 $images = unserialize($products[$i]->images);
                 // H::ddd($products[$i]->images);
-                $x = unserialize($products[$i]->images);
+                $x = json_decode($products[$i]->images,1);
                 H::ddd($x);
                 if (!empty($images)) {
                     $names = $this->saveEtsyImage($images, $products[$i]->result_id);
