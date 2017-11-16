@@ -126,7 +126,7 @@ class Etsy extends Model
             $name = $productId."_".$i.'.jpg';
             $imageFolder = $folder.'/'.$name;
             // H::ddd([$imageFolder,$urls[$i]]);
-            file_put_contents($imageFolder, file_get_contents($urls[$i]));
+            var_dump(file_put_contents($imageFolder, file_get_contents($urls[$i])));die();
             $names[] = $name;
         }
         return $names;
