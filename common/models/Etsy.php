@@ -202,25 +202,23 @@ class Etsy extends Model
                         ->andWhere(['<>', 'result_id', 0])
                         ->limit(2)
                         ->all();
-        // H::ddd($products);
         if ($products) {
             foreach ($products as $etsyProduct) {
                 $rawImages = unserialize($etsyProduct->images);
                 $product = Product::findOne(['id'=>$etsyProduct->result_id]);
 
                 $imageNames = Image::updloadProductImages($product->id, $rawImages, true);
-                H::ddd($imageNames);
 
                 for ($i=0; $i < count($imageNames); $i++) { 
                     $main = $i == 0 ? 1 : 0;
                     $picture = new Image(['product_id'=>$product->id, 'name'=>$imageNames[$i], 'main'=>$main]);
                     $product->link('allImages', $picture);
                 }
-                // $product->has_images = Product::STATUS_HAS_IMAGES;
-                // $product->update();
+                $product->has_images = Product::STATUS_HAS_IMAGES;
+                $product->update();
 
-                // $etsyProduct->is_exported = self::FULLY_EXPORTED;
-                // $etsyProduct->update();
+                $etsyProduct->is_exported = self::FULLY_EXPORTED;
+                $etsyProduct->update();
             }
 
             die('Added nice images :)');

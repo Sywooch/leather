@@ -94,7 +94,7 @@ class ProductImage extends \yii\db\ActiveRecord
         } else {
             $names = $files;
         }
-        H::ddd($names);
+        // H::ddd($names);
         $mode = \Imagine\Image\ManipulatorInterface::THUMBNAIL_INSET;
         Image::$thumbnailBackgroundColor = '#f5f5f5';
 
@@ -108,7 +108,7 @@ class ProductImage extends \yii\db\ActiveRecord
                     ->save($folder.$fullName, ['quality' => $values['quality']]);
             }
 
-            // unlink($folder.$name);
+            unlink($folder.$name);
         }
 
         return $resultNames;
