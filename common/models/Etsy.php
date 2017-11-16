@@ -201,7 +201,7 @@ class Etsy extends Model
                         ->andWhere(['<>', 'result_id', 0])
                         ->limit(2)
                         ->all();
-        H::ddd($products);
+        // H::ddd($products);
         if ($products) {
             foreach ($products as $etsyProduct) {
                 $rawImages = unserialize($etsyProduct->images);
