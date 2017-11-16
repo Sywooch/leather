@@ -47,7 +47,7 @@ class Etsy extends Model
 
     public function getActiveShopListing()
     {
-        $url = self::API_URL . "/shops/" . self::DIANO_SHOP_ID . "/listings/active" . "?limit=40&api_key=". self::SECRET;
+        $url = self::API_URL . "/shops/" . self::DIANO_SHOP_ID . "/listings/active" . "?limit=50&api_key=". self::SECRET;
         $json = self::getCurl($url);
         $results = json_decode($json);
         return $results;
@@ -215,7 +215,7 @@ class Etsy extends Model
                 }
                 $product->has_images = Product::STATUS_HAS_IMAGES;
                 $product->update();
-                
+
                 $etsyProduct->is_exported = self::FULLY_EXPORTED;
                 $etsyProduct->update();
             }
