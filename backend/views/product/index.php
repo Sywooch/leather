@@ -32,11 +32,8 @@
 						<tr>
 							<td><img src="<?= $product->showMainImage('xs') ?>" alt="" class="img-responsive img-thumbnail" style="max-width: 150px; max-height: 150px;"></td>
 							<td><?= Html::a($product->getTitle(), ['update', 'id'=>$product->id]) ?></td>
-							
 							<td><?= $product->isActive() ? 'Active' : 'Hidden' ?></td>
-
 							<td><?= $product->getPrice() ?></td>
-							<?= H::ddd($product->getPrice(),1) ?>
 							<td><?= Html::a('Update', ['update', 'id'=>$product->id], ['class'=>'btn btn-success']) ?></td>
 						</tr>
 					<?php endforeach ?>
