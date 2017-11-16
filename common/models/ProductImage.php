@@ -12,7 +12,7 @@ use common\models\Product;
 class ProductImage extends \yii\db\ActiveRecord
 {
 
-    const PRODUCT_IMAGE_FOLDER = "/images/products/";
+    const PRODUCT_IMAGE_FOLDER = "images/products/";
 
     public static function tableName()
     {
