@@ -73,7 +73,7 @@ class ProductImage extends \yii\db\ActiveRecord
         }
     }
 
-    public static function updloadProductImages($pId, $files)
+    public static function updloadProductImages($pId, $files, $fromEtsy = false)
     {
         $names = [];
         $resultNames = [];
@@ -86,9 +86,13 @@ class ProductImage extends \yii\db\ActiveRecord
             $result = true;
         }
 
-        foreach ($files as $file) {
-            $names[] = $file->name;
-            $file->saveAs($folder . $file->name);
+        if (!$fromEtsy) {
+            foreach ($files as $file) {
+                $names[] = $file->name;
+                $file->saveAs($folder . $file->name);
+            }    
+        } else {
+            $names = $files;
         }
 
         $mode = \Imagine\Image\ManipulatorInterface::THUMBNAIL_INSET;
