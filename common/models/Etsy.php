@@ -185,12 +185,11 @@ class Etsy extends Model
         if ($products) {
             for ($i=0; $i < count($products) ; $i++) { 
                 $images = json_decode($products[$i]->images,1);
-                // H::ddd($images);
                 if (!empty($images)) {
                     $names = $this->saveEtsyImage($images, $products[$i]->result_id);
                 }
                 $products[$i]->is_exported = self::EXPORTED_WITH_RAW_IMAGES;
-                $products[$i]->images = serialize($names);
+                $products[$i]->images = json_encode($names);
                 $products[$i]->update();
             }
 
@@ -207,7 +206,7 @@ class Etsy extends Model
                         ->all();
         if ($products) {
             foreach ($products as $etsyProduct) {
-                $rawImages = unserialize($etsyProduct->images);
+                $rawImages = json_decode($etsyProduct->images,1);
                 $product = Product::findOne(['id'=>$etsyProduct->result_id]);
 
                 $imageNames = Image::updloadProductImages($product->id, $rawImages, true);
