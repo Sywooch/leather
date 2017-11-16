@@ -221,7 +221,6 @@ class Product extends \yii\db\ActiveRecord
     public function getPrice()
     {
         return Yii::$app->formatter->asCurrency( $this->price );
-        // return $this->price;
     }
 
     public function getMaterials()

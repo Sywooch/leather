@@ -15,9 +15,6 @@ class EtsyController extends Controller
 {
 	public function actionIndex()
 	{
-		// phpinfo();
-		// die();
-		H::ddd(Yii::$app->formatter->asCurrency(90));
 		$action = Yii::$app->request->get('action');
 		$etsy = new Etsy();
 		switch ($action) {
@@ -36,6 +33,9 @@ class EtsyController extends Controller
 			case 'set-images-to-products':
 				$etsy->setUpImagesFromEtsy();
 				break;
+			default:
+				die('DD');
+				
 		}
 	}
 
