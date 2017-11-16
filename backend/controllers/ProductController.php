@@ -48,8 +48,6 @@ class ProductController extends Controller
     				->where(Product::findCondition('admin'))
                     ->with(['mainImage'])
     				->all();
-        H::ddd($products[0]->showMainImage('xs'));
-
 
     	return $this->render('index', compact('products'));
     }
