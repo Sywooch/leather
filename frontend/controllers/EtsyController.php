@@ -17,7 +17,7 @@ class EtsyController extends Controller
 	{
 		// phpinfo();
 		// die();
-		H::ddd(Yii::$app->formatter);
+		H::ddd(Yii::$app->formatter->asCurrency(90));
 		$action = Yii::$app->request->get('action');
 		$etsy = new Etsy();
 		switch ($action) {
