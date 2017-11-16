@@ -187,7 +187,7 @@ class Etsy extends Model
         if ($products) {
             for ($i=0; $i < count($products) ; $i++) { 
                 $images = unserialize($products[$i]->images);
-                H::ddd($images);
+                H::ddd($products[$i]->images);
                 if (!empty($images)) {
                     $names = $this->saveEtsyImage($images, $products[$i]->result_id);
                 }
