@@ -108,7 +108,7 @@ class ProductImage extends \yii\db\ActiveRecord
                     ->save($folder.$fullName, ['quality' => $values['quality']]);
             }
 
-            unlink($folder.$name);
+            // unlink($folder.$name);
         }
 
         return $resultNames;
