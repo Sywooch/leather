@@ -176,7 +176,7 @@ class Etsy extends Model
         $products = EtsyProducts::find()
                         ->where(['is_exported'=>self::EXPORTED_WITH_NO_IMAGES])
                         ->andWhere(['<>', 'result_id', 0])
-                        ->limit(2)
+                        ->limit(10)
                         ->all();
 
         if ($products) {
@@ -199,7 +199,7 @@ class Etsy extends Model
         $products = EtsyProducts::find()
                         ->where(['is_exported'=>self::EXPORTED_WITH_RAW_IMAGES])
                         ->andWhere(['<>', 'result_id', 0])
-                        ->limit(5)
+                        ->limit(10)
                         ->all();
         if ($products) {
             foreach ($products as $etsyProduct) {
