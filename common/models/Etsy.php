@@ -181,12 +181,13 @@ class Etsy extends Model
         $products = EtsyProducts::find()
                         ->where(['is_exported'=>self::EXPORTED_WITH_NO_IMAGES])
                         ->andWhere(['<>', 'result_id', 0])
-                        ->limit(10)
+                        ->limit(5)
                         ->all();
 
         if ($products) {
             for ($i=0; $i < count($products) ; $i++) { 
                 $images = unserialize($products[$i]->images);
+                H::ddd($images);
                 if (!empty($images)) {
                     $names = $this->saveEtsyImage($images, $products[$i]->result_id);
                 }
