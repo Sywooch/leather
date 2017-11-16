@@ -61,7 +61,7 @@ return [
             'datetimeFormat' => 'd/M/Y H:i',
             'decimalSeparator' => ',',
             'thousandSeparator' => ' ',
-            'currencyCode' => '$',
+            'currencyCode' => '',
         ],
         
     ],
