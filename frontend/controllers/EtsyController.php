@@ -15,6 +15,8 @@ class EtsyController extends Controller
 {
 	public function actionIndex()
 	{
+		phpinfo();
+		die();
 		$action = Yii::$app->request->get('action');
 		$etsy = new Etsy();
 		switch ($action) {

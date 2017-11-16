@@ -41,7 +41,7 @@
 	                <div class="nk-portfolio-item nk-portfolio-item-info-style-1">
 	                    <a href="<?= Url::to(['shop/product', 'id'=>$product->id, 'slug'=>$product->slug]) ?>" class="nk-portfolio-item-link"></a>
 	                    <div class="nk-portfolio-item-image">
-	                        <div style="background-image: url('<?= $product->showMainImage('md') ?>');"></div>
+	                        <div style="background-image: url('<?= $product->showMainImage('sm') ?>');"></div>
 	                    </div>
 	                    <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-center">
 	                        <div>
