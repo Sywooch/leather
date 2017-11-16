@@ -32,8 +32,9 @@
 						<tr>
 							<td><img src="<?= $product->showMainImage('xs') ?>" alt="" class="img-responsive img-thumbnail" style="max-width: 150px; max-height: 150px;"></td>
 							<td><?= Html::a($product->getTitle(), ['update', 'id'=>$product->id]) ?></td>
-							<?= H::ddd(1) ?>
+							
 							<td><?= $product->isActive() ? 'Active' : 'Hidden' ?></td>
+							<?= H::ddd($product->isActive(),1) ?>
 							<td><?= $product->getPrice() ?></td>
 							<td><?= Html::a('Update', ['update', 'id'=>$product->id], ['class'=>'btn btn-success']) ?></td>
 						</tr>
