@@ -94,7 +94,7 @@ class ProductImage extends \yii\db\ActiveRecord
         } else {
             $names = $files;
         }
-
+        H::ddd($names);
         $mode = \Imagine\Image\ManipulatorInterface::THUMBNAIL_INSET;
         Image::$thumbnailBackgroundColor = '#f5f5f5';
 
