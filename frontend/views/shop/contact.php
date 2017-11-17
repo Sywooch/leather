@@ -19,7 +19,7 @@
                 <br>
                 We send orders through our post service and it usually takes about 1.5 week for Europe destinations and 2-3 weeks for USA, Canada, Australia, New Zealand...
                 <br>
-                Of course if you want fast delivery - we send orders using UPS. It takes 2-4 days for delivery and extra <?= Yii::$app->formatter->asCurrancy(40) ?>-<?= Yii::$app->formatter->asCurrancy(70) ?>.
+                Of course if you want fast delivery - we send orders using UPS. It takes 2-4 days for delivery and extra <?= Yii::$app->formatter->asCurrency(40) ?>-<?= Yii::$app->formatter->asCurrency(70) ?>.
                 <br>
                 Payservice: <b>Paypal</b>. Usually we ask customers to place an order on our <a href="https://www.etsy.com/shop/DianoD" target="_blank">Etsy shop</a>. So, it will be easier to discuss all questions there before actuall pay monent. And it easier for further order control.
             </p>
