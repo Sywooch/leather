@@ -6,6 +6,8 @@
 
     $materials = $product->getMaterials();
     $tags = $product->getTags();
+
+    $this->title  = $product->getTitle();
  ?>
 
 <div class="container-fluid">

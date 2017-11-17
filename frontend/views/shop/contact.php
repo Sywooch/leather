@@ -2,6 +2,8 @@
     use yii\bootstrap\ActiveForm;
     use common\widgets\Alert;
     use yii\helpers\Html;
+
+    $this->title  = 'Handmade leather goods with custom design and engraving.';
 ?>
 <!-- START: Contact Info -->
 <div class="container">
