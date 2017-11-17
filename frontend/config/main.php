@@ -18,6 +18,11 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
+        'cache' => [
+            'class' => 'yii\caching\DbCache',
+            // 'db' => 'mydb',
+            // 'cacheTable' => 'cache',
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

@@ -8,6 +8,7 @@ use common\models\Product;
 use common\models\Category;
 use common\models\H;
 use frontend\models\ContactForm;
+use frontend\models\Sitemap;
 
 
 class ShopController extends Controller
@@ -71,4 +72,16 @@ class ShopController extends Controller
 
 		return $this->render('contact', compact('model'));
 	}
+
+	public function actionSitemap()
+	{
+		$model = new Sitemap();
+		$sitemap = $model->generateSitemap();
+		Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+	    Yii::$app->response->headers->add('Content-Type', 'text/xml');
+
+	    return $this->renderPartial('sitemap', compact('sitemap'));
+	}
+
+	
 }

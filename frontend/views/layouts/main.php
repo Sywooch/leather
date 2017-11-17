@@ -38,7 +38,9 @@ AppAsset::register($this);
                     </div>
 
                     <div class="nk-footer-text">
-                        <p>2016 &copy; Design by Unvab. Code by nK</p>
+                        <p><?= Html::a('Sitemap', ['shop/sitemap']) ?></p>
+                        
+                        <p><?= date('Y') ?> &copy; Code by MaksDmytrenko</p>
                     </div>
                 </div>
             </div>
