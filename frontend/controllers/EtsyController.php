@@ -8,7 +8,10 @@ use common\models\Product;
 use common\models\Category;
 use common\models\H;
 use common\models\Etsy;
+// use common\models\EtsyApi;
 use frontend\models\ContactForm;
+
+use yii\authclient\OAuth1;
 
 
 class EtsyController extends Controller
@@ -39,10 +42,19 @@ class EtsyController extends Controller
 		}
 	}
 
-	public function actionReviews()
+	public function actionTest()
 	{
-		$etsy = new Etsy();
-		$etsy->getToken();
+		phpinfo();
+		// $x = new \OAuth();
+
+		// $x = new OAuth1();
+		// $etsy = new EtsyApi();
+
+		// $oauthClient = new EtsyApi();
+		// $requestToken = $oauthClient->fetchRequestToken(); 
+		// H::ddd($x);
+
+		// $etsy->getToken();
 	}
 
 	

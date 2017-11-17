@@ -40,7 +40,7 @@ AppAsset::register($this);
                     <div class="nk-footer-text">
                         <p><?= Html::a('Sitemap', ['shop/sitemap']) ?></p>
                         
-                        <p><?= date('Y') ?> &copy; Code by MaksDmytrenko</p>
+                        <p><?= date('Y') ?> &copy; <small>Code by <?= Html::a("MaksDmytrenko", "https://www.linkedin.com/in/maks-dmytrenko-836736a9/", ['target'=>"_blank"]) ?></small></p>
                     </div>
                 </div>
             </div>
