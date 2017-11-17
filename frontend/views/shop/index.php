@@ -18,13 +18,19 @@
             <div class="nk-gap-6 mnb-10"></div>
 
             <div class="nk-box-4 mw-620">
-                <h2 class="display-4">Digital. Modern. Creative</h2>
+                <h2 class="display-4">Creative. Unique. Handmade.</h2>
                 <div class="nk-gap mnt-5"></div>
 
-                <p>We are a new design studio based in USA. We have over 20 years of combined experience, and know a thing or two about designing websites and mobile apps.</p>
+                <p>
+                    We are a collaboration of handmade crafters based in Ukraine. Our team has a great experience in creating handmade covers, wallets, cards and keys holders from high-quality leather. We can create products according to your custom design and add engraving to it. 
+                    <br>
+                    Please, be free to contact us if you want to <?= Html::a('buy or order custom design', ['shop/contact']) ?>.
+                    <br>
+                    <b>Our etsy shop:</b> <a href="https://www.etsy.com/shop/DianoD" target="_blank">Etsy</a> 
+                </p>
 
                 <div class="mnt-7">
-                    <a class="nk-btn-2" href="page-contact-us.html">Work with us now</a>
+                    <a class="nk-btn-2" href="<?= Url::to(['shop/catalog']) ?>">Our catalog</a>
                 </div>
             </div>
 
