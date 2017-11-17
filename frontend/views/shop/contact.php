@@ -14,17 +14,18 @@
             <h2 class="display-4">Contact Info:</h2>
             <div class="nk-gap mnt-3"></div>
 
-            <p>Praesent interdum congue mauris, et fringilla lacus pel vitae. Quisque nisl mauris, aliquam eu ultrices vel, conse vitae sapien at imperdiet risus. Quisque cursus risus id. fermentum, in auctor quam consectetur.</p>
+            <p>
+                We are situated in Ukraine. 
+                <br>
+                We send orders through our post service and it usually takes about 1.5 week for Europe destinations and 2-3 weeks for USA, Canada, Australia, New Zealand...
+                <br>
+                Of course if you want fast delivery - we send orders using UPS. It takes 2-4 days for delivery and extra <?= Yii::$app->formatter->asCurrancy(40) ?>-<?= Yii::$app->formatter->asCurrancy(70) ?>.
+                <br>
+                Payservice: <b>Paypal</b>. Usually we ask customers to place an order on our <a href="https://www.etsy.com/shop/DianoD" target="_blank">Etsy shop</a>. So, it will be easier to discuss all questions there before actuall pay monent. And it easier for further order control.
+            </p>
 
             <ul class="nk-contact-info">
-                <li>
-                    <strong>Address:</strong> 10111 Santa Monica Boulevard, LA</li>
-                <li>
-                    <strong>Phone:</strong> +44 987 065 908</li>
-                <li>
-                    <strong>Email:</strong> info@Example.com</li>
-                <li>
-                    <strong>Fax:</strong> +44 987 065 909</li>
+                <li><strong>Email:</strong> info@Example.com</li>
             </ul>
             <!-- END: Info -->
         </div>
