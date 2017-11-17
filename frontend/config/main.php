@@ -12,8 +12,8 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute'=> '/shop/index',
-    'language' => 'en-EN',
-    'sourceLanguage' => 'en-EN',
+    'language' => 'en-US',
+    'sourceLanguage' => 'en-US',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',

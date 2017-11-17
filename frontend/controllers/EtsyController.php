@@ -39,5 +39,11 @@ class EtsyController extends Controller
 		}
 	}
 
+	public function actionReviews()
+	{
+		$etsy = new Etsy();
+		$etsy->getToken();
+	}
+
 	
 }

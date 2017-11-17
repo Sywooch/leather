@@ -29,7 +29,7 @@
                             </tr>
                             <?php if (!empty($materials)): ?>
                                 <tr>
-                                    <td><strong>Materiials:</strong></td>
+                                    <td><strong>Materials:</strong></td>
                                     <td>
                                         <?php foreach ($materials as $material): ?>
                                             <span class="product-tag-item"><?= $material ?></span>

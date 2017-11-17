@@ -1,6 +1,8 @@
 <?php 
     use yii\helpers\Url;
     use yii\helpers\Html;
+
+    $this->title = 'Catalog of handmade covers. Leather phone covers, key and card holders, notebook covers, wallets';
 ?>
 
 <div class="container">

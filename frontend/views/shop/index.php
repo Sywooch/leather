@@ -1,6 +1,8 @@
 <?php    
     use yii\helpers\Html;
     use yii\helpers\Url;
+
+    $this->title = 'Handmade phone covers, notebook covers, wallets';
 ?>
 <!-- START: Digital. Modern. Creative -->
 <div class="container-fluid">

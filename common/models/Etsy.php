@@ -11,6 +11,9 @@ use common\models\Product;
 use common\models\ProductInfo as Info;
 use common\models\ProductImage as Image;
 
+use yii\authclient\OAuth1 as OAuth;
+
+
 class Etsy extends Model
 {
     const SECRET = "ohzjjz6ww5hbgjpq4v33lcyz";
@@ -59,6 +62,18 @@ class Etsy extends Model
         $json = self::getCurl($url);
         $results = json_decode($json);
         return $results;
+    }
+
+    public function getToken()
+    {
+        // $oauth = new \OAuth(self::SECRET, self::SHARED_SECRET);
+        // H::ddd($oauth);
+        // $req_token = $oauth->getRequestToken("https://openapi.etsy.com/v2/oauth/request_token?scope=transactions_r", 'oob');
+        // H::ddd($req_token);
+
+        $oauthClient = new MyAuthClient();
+        $requestToken = $oauthClient->fetchRequestToken(); // Get request token
+        $url = $oauthClient->buildAuthUrl($requestToken); // Get authorization URL
     }
 
 
@@ -134,7 +149,8 @@ class Etsy extends Model
         return $names;
     }
 
-    public function exportProducts(){
+    public function exportProducts()
+    {
         $products = EtsyProducts::find()->where(['is_exported'=>self::NOT_EXPORTED,'result_id'=>0])->all();
         if (!$products) {
             die('No products for export');
@@ -172,7 +188,6 @@ class Etsy extends Model
 
         die('Exported raw product data without images from Etsy.');
     }
-
 
     public function saveRawImages()
     {
@@ -227,7 +242,5 @@ class Etsy extends Model
         }
 
         die('Failed');
-
-
     }
 }
