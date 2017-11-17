@@ -2,7 +2,7 @@
     use yii\helpers\Html;
     use yii\helpers\Url;
 
-    $this->title = 'Handmade phone covers, notebook covers, wallets';
+    $this->title = 'Handmade phone covers, notebook covers, wallets. We make custom design and engraving.';
 ?>
 <!-- START: Digital. Modern. Creative -->
 <div class="container-fluid">
