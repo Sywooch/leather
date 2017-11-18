@@ -1,6 +1,7 @@
 <?php    
     use yii\helpers\Html;
     use yii\helpers\Url;
+    use common\models\H;
 
     $this->title = 'Handmade phone covers, notebook covers, wallets. We make custom design and engraving.';
 ?>
@@ -36,12 +37,18 @@
 
             <div class="nk-gap-6"></div>
         </div>
-    </div>
+    </div>    
 </div>
+
+
+
 <!-- END: Digital. Modern. Creative -->
 
 <!-- START: Portfolio -->	
 <div class="container-fluid">
+
+    <?= $this->render('etsy-reviews', compact('feedbacks')) ?>
+
     <div class="nk-portfolio-list nk-isotope nk-isotope-3-cols">
     	<?php if ($products): ?>
 			<?php foreach ($products as $product): ?>

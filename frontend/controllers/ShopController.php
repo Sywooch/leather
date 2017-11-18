@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use common\models\Product;
 use common\models\Category;
+use common\models\EtsyFeedbacks;
 use common\models\H;
 use frontend\models\ContactForm;
 use frontend\models\Sitemap;
@@ -16,8 +17,14 @@ class ShopController extends Controller
 	public function actionIndex()
 	{
 		$products = Product::find()->where(Product::findCondition('front'))->with(['mainImage'])->limit(6)->all();
+
+		// 
+		$etsy = new EtsyFeedbacks();
+		$feedbacks = $etsy->getFeedBacks();
+		// H::ddd($feedbacks);
+		// 
 		
-		return $this->render('index', compact('products'));
+		return $this->render('index', compact('products', 'feedbacks'));
 	}
 
 	public function actionCatalog()

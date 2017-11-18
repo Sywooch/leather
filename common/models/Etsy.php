@@ -6,12 +6,13 @@ use yii\base\Model;
 use yii\helpers\Html;
 use yii\helpers\FileHelper;
 use common\models\H;
+use common\models\EtsyApi as API;
 use common\models\EtsyProducts;
 use common\models\Product;
 use common\models\ProductInfo as Info;
 use common\models\ProductImage as Image;
 
-use yii\authclient\OAuth1 as OAuth;
+// use yii\authclient\OAuth1 as OAuth;
 
 
 class Etsy extends Model
@@ -243,4 +244,5 @@ class Etsy extends Model
 
         die('Failed');
     }
+
 }

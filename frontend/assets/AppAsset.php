@@ -24,8 +24,11 @@ class AppAsset extends AssetBundle
         'theme/snow/dist/assets/css/snow.css',
         'theme/snow/dist/assets/css/custom.css',
         'css/custom_.css',
+        'libs/slick/slick/slick.css',
+        'libs/slick/slick/slick-theme.css'
     ];
     public $js = [
+        'js/bootstrap.min.js',
         'theme/snow/dist/assets/bower_components/gsap/src/minified/TweenMax.min.js',
         'theme/snow/dist/assets/bower_components/gsap/src/minified/plugins/ScrollToPlugin.min.js',
         'theme/snow/dist/assets/bower_components/tether/dist/js/tether.min.js',
@@ -46,6 +49,11 @@ class AppAsset extends AssetBundle
         // 'theme/snow/dist/assets/js/snow.min.js',
         'theme/snow/dist/assets/js/snow.js',
         'theme/snow/dist/assets/js/snow-init.js',
+
+        'libs/slick/slick/slick.min.js',
+        'js/custom.js'
+
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -13,3 +13,27 @@ p.help-block-error{
     font-weight: 500;
     text-decoration: underline;
 }
+
+.review-buyer-logo{
+    max-width: 50px;
+    max-height: 50px;
+}
+.review-star-checked {
+    color: orange;
+}
+.review-message{
+    font-size: 13px;
+}
+.review-product-image{
+    max-width: 75px;
+    max-height: 75px;
+}
+.review-product a{
+    color: black;
+    font-size: 11px;
+}
+@media screen and (min-width: 480px) {
+    .multiple-items{
+        margin-top: 20px;
+    }
+}

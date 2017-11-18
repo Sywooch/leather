@@ -68,18 +68,7 @@ return [
             'decimalSeparator' => ',',
             'thousandSeparator' => ' ',
             'currencyCode' => 'USD',
-        ],
-        // 'authClientCollection' => [
-        //     'class' => 'yii\authclient\Collection',
-        //     'clients' => [
-        //         'etsy' => [
-        //             'class' => 'yii\authclient\clients\Etsy',
-        //             'clientId'      => 'ohzjjz6ww5hbgjpq4v33lcyz',
-        //             'clientSecret'  => '5unx3xduz8',
-        //         ],
-        //     ],
-        // ]
-        
+        ],        
     ],
     'params' => $params,
 ];
