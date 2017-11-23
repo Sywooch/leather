@@ -45,12 +45,7 @@ class ContactForm extends Model
     //     ];
     // }
 
-    /**
-     * Sends an email to the specified email address using the information collected by this model.
-     *
-     * @param string $email the target email address
-     * @return bool whether the email was sent
-     */
+    
     public function sendEmail($email)
     {
         // H::ddd([$email,$this->email, $this->name, $this->subject,  $this->body]);
