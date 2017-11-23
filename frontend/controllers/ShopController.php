@@ -16,6 +16,7 @@ class ShopController extends Controller
 {
 	public function actionIndex()
 	{
+		H::ddd(YII_ENV_TEST,1);
 		$products = Product::find()->where(Product::findCondition('front'))->with(['mainImage'])->limit(6)->all();
 
 		// 
