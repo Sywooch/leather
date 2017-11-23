@@ -46,6 +46,7 @@ class ShopController extends Controller
 						->one();
 		
         if ($model->load(Yii::$app->request->post())) {
+        	$model->subject = $product->title;
         	$result = false;
         	if ($model->validate() && $model->sendEmail(Yii::$app->params['adminEmail'])) {
         		$result = true;

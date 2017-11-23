@@ -1,4 +1,51 @@
 <?php
+
+if (YII_DEBUG == true) {
+    $db = [
+        'class' => 'yii\db\Connection',
+        'dsn' => 'mysql:host=localhost;dbname=leather',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+    ];
+
+    $email = [
+        'class' => 'yii\swiftmailer\Mailer',
+        'viewPath' => '@common/mail',
+        // send all mails to a file by default. You have to set
+        // 'useFileTransport' to false and configure a transport
+        // for the mailer to send real emails.
+        'useFileTransport' => true,
+    ];
+
+} else {
+    $db = [
+        'class' => 'yii\db\Connection',
+        'dsn' => 'mysql:host=timetobu.mysql.tools;dbname=timetobu_leather',
+        'username' => 'timetobu_leather',
+        'password' => '6nkjjebc',
+        'charset' => 'utf8',
+    ];
+
+    $email = [
+        'class' => 'yii\swiftmailer\Mailer',
+        'viewPath' => '@common/mail',
+        // send all mails to a file by default. You have to set
+        // 'useFileTransport' to false and configure a transport
+        // for the mailer to send real emails.
+        'useFileTransport' => false,
+        'transport' => [
+            'class' => 'Swift_SmtpTransport',
+            'host' => 'mail.ukraine.com.ua',
+            'username' => 'info@diano.store',
+            'password' => 'RR392EIesui4',
+            'port' => '2525',
+            'encryption' => 'tls',
+        ],
+    ];
+}
+
+
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -9,24 +56,11 @@ return [
 
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DbCache',
         ],
-        // 'mailer' => [
-        //     'class' => 'yii\swiftmailer\Mailer',
-        //     'viewPath' => '@common/mail',
-        //     // send all mails to a file by default. You have to set
-        //     // 'useFileTransport' to false and configure a transport
-        //     // for the mailer to send real emails.
-        //     'useFileTransport' => false,
-        //     'transport' => [
-        //         'class' => 'Swift_SmtpTransport',
-        //         'host' => 'mail.ukraine.com.ua',
-        //         'username' => 'info@diano.store',
-        //         'password' => 'RR392EIesui4',
-        //         'port' => '2525',
-        //         'encryption' => 'tls',
-        //     ],
-        // ],
+
+        'db' => $db,
+        'mailer' => $email,
     ],
     'modules' => [
        'treemanager' =>  [
