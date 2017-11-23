@@ -1,6 +1,6 @@
 <?php
 
-if (YII_DEBUG == true) {
+if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.0.1'){
     $db = [
         'class' => 'yii\db\Connection',
         'dsn' => 'mysql:host=localhost;dbname=leather',
