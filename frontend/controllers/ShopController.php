@@ -67,7 +67,6 @@ class ShopController extends Controller
 		$model = new ContactForm();
         if ($model->load(Yii::$app->request->post())) {
         	$result = false;
-        	// H::ddd([$model->validate(), $model->errors],1);
         	if ($model->validate() && $model->sendEmail(Yii::$app->params['adminEmail'])) {
         		$result = true;
         	}
