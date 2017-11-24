@@ -6,9 +6,6 @@ use Yii;
 use yii\base\Model;
 use common\models\H;
 
-/**
- * ContactForm is the model behind the contact form.
- */
 class ContactForm extends Model
 {
     public $name;
@@ -34,21 +31,10 @@ class ContactForm extends Model
             
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
-    // public function attributeLabels()
-    // {
-    //     return [
-    //         'verifyCode' => 'Verification Code',
-    //     ];
-    // }
-
     
     public function sendEmail($email)
     {
-        // H::ddd([$email, $this->email, $this->name, $this->subject, $this->body]);
+        H::ddd(Yii::$app->mailer->host,1);
         return Yii::$app->mailer->compose()
             ->setTo($email)
             ->setFrom([$this->email => $this->name])
