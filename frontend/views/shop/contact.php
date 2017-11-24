@@ -25,7 +25,7 @@
             </p>
 
             <ul class="nk-contact-info">
-                <li><strong>Email:</strong> info@Example.com</li>
+                <li><strong>Email:</strong> info@diano.store</li>
             </ul>
             <!-- END: Info -->
         </div>
