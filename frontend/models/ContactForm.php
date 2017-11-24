@@ -45,13 +45,22 @@ class ContactForm extends Model
 
     public function sendEmail($email)
     {
-        $to      = 'sbmd@ukr.net';
-        $subject = 'the subject';
-        $message = 'hello';
+        $to      = $email;
+        $subject = 'New request from contact page';
+        $message = 'Hello, you got new request from contact page';
         $headers = 'From: '.$this->email. "\r\n" .
             'Reply-To: info@diano.store' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-        return mail($to, $subject, $message, $headers);    
+        mail($to, $subject, $message, $headers);
+
+        $to      = $this->email;
+        $subject = 'Request from Diano.Store';
+        $message = 'Hello. Thank you for your request. Wi will get in touch with you as soon as possible.';
+        $headers = 'From: info@diano.store'. "\r\n" .
+            'Reply-To: info@diano.store' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
     }
 }
