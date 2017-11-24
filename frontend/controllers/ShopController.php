@@ -37,7 +37,7 @@ class ShopController extends Controller
 	}
 
 	public function actionProduct()
-	{
+	{		
 		$model = new ContactForm();
 		$product = Product::find()
 						->where(Product::findCondition('front'))
@@ -46,9 +46,9 @@ class ShopController extends Controller
 						->one();
 		
         if ($model->load(Yii::$app->request->post())) {
-        	$model->subject = $product->title;
+        	$model->subject .= "\r\n". \yii\helpers\Url::current([], true));
         	$result = false;
-        	if ($model->validate() && $model->sendEmail(Yii::$app->params['adminEmail'])) {
+        	if ($model->validate() && $model->sendEmail()) {
         		$result = true;
         	}
         	if ($result) {
