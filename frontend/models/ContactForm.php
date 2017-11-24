@@ -47,8 +47,14 @@ class ContactForm extends Model
     {
         $to      = 'sbmd7482@gmail.com';
         $subject = 'New request from contact page';
-        $message = 'Hello, you got new request from contact page';
-        $headers = 'From: '.$this->email. "\r\n" .
+        
+        $message = 'Hello, you got new request from contact page.'."\r\n" .
+        $message .= 'Email: '. $this->email."\r\n" .
+        $message .= 'Name: '. $this->name."\r\n" .
+        $message .= 'Subject: '. $this->subject."\r\n" .
+        $message .= 'Message: '. $this->body."\r\n";
+
+        $headers = 'From: info@diano.store'. "\r\n" .
             'Reply-To: info@diano.store' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
