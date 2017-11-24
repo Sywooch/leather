@@ -43,11 +43,17 @@ class ContactForm extends Model
     // }
 
 
-    public function sendEmail($email)
+    public function sendEmail()
+    {
+        $this->sendToClient();
+        return $this->sendToSeller();
+    }
+
+    public function sendToSeller()
     {
         $to      = 'sbmd7482@gmail.com';
-        $subject = 'New request from contact page';
-        
+        $subject = 'New request from contact page.';
+
         $message = 'Hello, you got new request from contact page.'."\r\n" .
         $message .= 'Email: '. $this->email."\r\n" .
         $message .= 'Name: '. $this->name."\r\n" .
@@ -58,8 +64,11 @@ class ContactForm extends Model
             'Reply-To: info@diano.store' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-        mail($to, $subject, $message, $headers);
+        return mail($to, $subject, $message, $headers);
+    }
 
+    public function sendToClient()
+    {
         $to      = $this->email;
         $subject = 'Request from Diano.Store';
         $message = 'Hello. Thank you for your request. Wi will get in touch with you as soon as possible.';
