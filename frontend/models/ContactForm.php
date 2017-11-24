@@ -32,13 +32,26 @@ class ContactForm extends Model
         ];
     }
     
+    // public function sendEmail($email)
+    // {
+    //     return Yii::$app->mailer->compose()
+    //         ->setTo($email)
+    //         ->setFrom([$this->email => $this->name])
+    //         ->setSubject($this->subject)
+    //         ->setTextBody($this->body)
+    //         ->send();
+    // }
+
+
     public function sendEmail($email)
     {
-        return Yii::$app->mailer->compose()
-            ->setTo($email)
-            ->setFrom([$this->email => $this->name])
-            ->setSubject($this->subject)
-            ->setTextBody($this->body)
-            ->send();
+        $to      = 'sbmd@ukr.net';
+        $subject = 'the subject';
+        $message = 'hello';
+        $headers = 'From: '.$this->email. "\r\n" .
+            'Reply-To: info@diano.store' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        return mail($to, $subject, $message, $headers);    
     }
 }
