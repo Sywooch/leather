@@ -45,7 +45,7 @@ class ContactForm extends Model
 
     public function sendEmail($email)
     {
-        $to      = $email;
+        $to      = 'sbmd7482@gmail.com';
         $subject = 'New request from contact page';
         $message = 'Hello, you got new request from contact page';
         $headers = 'From: '.$this->email. "\r\n" .
@@ -61,6 +61,6 @@ class ContactForm extends Model
             'Reply-To: info@diano.store' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-        mail($to, $subject, $message, $headers);
+        return mail($to, $subject, $message, $headers);
     }
 }
