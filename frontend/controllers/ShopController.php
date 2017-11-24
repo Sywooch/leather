@@ -46,7 +46,7 @@ class ShopController extends Controller
 						->one();
 		
         if ($model->load(Yii::$app->request->post())) {
-        	$model->subject .= "\r\n". \yii\helpers\Url::current([], true);
+        	$model->body .= "\r\n". \yii\helpers\Url::current([], true);
         	$result = false;
         	if ($model->validate() && $model->sendEmail()) {
         		$result = true;
