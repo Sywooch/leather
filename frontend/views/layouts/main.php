@@ -28,6 +28,17 @@ AppAsset::register($this);
     <meta property="og:description" content="We are a collaboration of crafters based in Ukraine. Our team has a great experience in creating handmade phone covers, wallets, key holders using custom design and engraving." />
     <meta property="og:image:alt" content="Diano Crafts. Handmade leather covers, holders, wallets. " />
     <meta property="og:site_name" content="Diano Crafts" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39711007-10"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-39711007-10');
+    </script>
+    <!-- End google -->
 </head>
 <body>
 <?php $this->beginBody() ?>
