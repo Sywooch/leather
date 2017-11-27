@@ -11,7 +11,7 @@
  ?>
 
 <div class="container-fluid">
-    <div class="nk-portfolio-single nk-portfolio-single-half">
+    <div class="nk-portfolio-single nk-portfolio-single-half" itemscope itemtype="https://schema.org/Product">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="nk-portfolio-images">
@@ -20,6 +20,13 @@
                     <?php endforeach ?>
                 </div>
             </div>
+            <span itemscope itemtype="https://schema.org/Offer">
+                <meta itemprop="price" content="<?= $product->getPrice() ?>">
+                <meta itemprop="priceCurrency" content="USD">
+                <meta itemprop="name" content="<?= $product->getTitle() ?>">
+                <meta itemprop="image" content="<?= $product->showImage($product->mainImage->name, 'md') ?>">
+                <meta itemprop="availability" content="InStock">
+            </span>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="nk-sidebar-sticky" data-offset-top="0">
                     <div class="nk-portfolio-info">
@@ -78,7 +85,7 @@
                             </div>
                         <?php ActiveForm::end(); ?>
                         <hr>
-                        <div class="nk-portfolio-text"><?= $product->getDescription() ?></div>
+                        <div class="nk-portfolio-text" itemprop="description"><?= $product->getDescription() ?></div>
                     </div>
                 </div>
             </div>
