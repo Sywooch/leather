@@ -20,15 +20,7 @@
                         <img src="<?= $product->showImage(['name'=>$image->name, 'type'=>'lg']) ?>" alt="">
                     <?php endforeach ?>
                 </div>
-            </div>
-            <span itemprop="name"><?= $product->getTitle() ?></span>
-            <span itemscope itemtype="https://schema.org/Offer">
-                <meta itemprop="price" content="<?= $product->getPrice() ?>">
-                <meta itemprop="priceCurrency" content="USD">
-                <meta itemprop="name" content="<?= $product->getTitle() ?>">
-                <meta itemprop="image" content="<?= $product->showImage(['name'=>$product->mainImage->name, 'type'=>'md']) ?>">
-                <meta itemprop="availability" content="InStock">
-            </span>
+            </div>            
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="nk-sidebar-sticky" data-offset-top="0">
                     <div class="nk-portfolio-info">
@@ -90,6 +82,14 @@
                         <div class="nk-portfolio-text" itemprop="description"><?= $product->getDescription() ?></div>
                     </div>
                 </div>
+                <span itemprop="name"><?= $product->getTitle() ?></span>
+                <span itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="price" content="<?= $product->getPrice() ?>">
+                    <meta itemprop="priceCurrency" content="USD">
+                    <meta itemprop="name" content="<?= $product->getTitle() ?>">
+                    <meta itemprop="image" content="<?= $product->showImage(['name'=>$product->mainImage->name, 'type'=>'md']) ?>">
+                    <meta itemprop="availability" content="InStock">
+                </span>
             </div>
             
         </div>
