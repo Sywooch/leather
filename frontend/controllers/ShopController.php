@@ -23,6 +23,11 @@ class ShopController extends Controller
 		$feedbacks = $etsy->getFeedBacks();
 		// H::ddd($feedbacks);
 		// 
+		// 
+		Yii::$app->view->registerMetaTag([
+	        'name' => 'og:image',
+	        'content' => 'http://diano.store/images/common/1.jpg',
+	    ]);
 		
 		return $this->render('index', compact('products', 'feedbacks'));
 	}
@@ -32,6 +37,11 @@ class ShopController extends Controller
 		$products = Product::find()->where(Product::findCondition('front'))->with(['mainImage', 'cats'])->all();
 
 		$categories = Category::getCatsWithProducts();
+
+		Yii::$app->view->registerMetaTag([
+	        'name' => 'og:image',
+	        'content' => 'http://diano.store/images/common/1.jpg',
+	    ]);
 		
 		return $this->render('catalog', compact('products', 'categories'));
 	}
@@ -44,6 +54,11 @@ class ShopController extends Controller
 						->andWhere(['id'=>(int)Yii::$app->request->get('id')])
 						->with(['allImages', 'info'])
 						->one();
+
+		Yii::$app->view->registerMetaTag([
+	        'name' => 'og:image',
+	        'content' => $product->showImage(['name'=>$product->mainImage->name, 'type'=>'md']),
+	    ]);
 		
         if ($model->load(Yii::$app->request->post())) {
         	$model->body .= "\r\n". \yii\helpers\Url::current([], true);
@@ -65,6 +80,13 @@ class ShopController extends Controller
 	public function actionContact()
 	{
 		$model = new ContactForm();
+
+		Yii::$app->view->registerMetaTag([
+	        'name' => 'og:image',
+	        'content' => 'http://diano.store/images/common/1.jpg',
+	    ]);
+
+
         if ($model->load(Yii::$app->request->post())) {
         	$result = false;
         	if ($model->validate() && $model->sendEmail()) {

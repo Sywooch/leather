@@ -26,12 +26,8 @@ AppAsset::register($this);
     <meta property="og:locale" content="<?= Yii::$app->language ?>" />
     <meta property="og:title" content="<?= Html::encode($this->title) ?>" />
     <meta property="og:description" content="We are a collaboration of crafters based in Ukraine. Our team has a great experience in creating handmade phone covers, wallets, key holders using custom design and engraving." />
-    <meta property="og:image" content="http://diano.store/images/common/1.jpg" />
     <meta property="og:image:alt" content="Diano Crafts. Handmade leather covers, holders, wallets. " />
     <meta property="og:site_name" content="Diano Crafts" />
-    
-
-
 </head>
 <body>
 <?php $this->beginBody() ?>

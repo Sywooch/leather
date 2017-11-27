@@ -16,7 +16,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="nk-portfolio-images">
                     <?php foreach ($product->allImages as $image): ?>
-                        <img src="<?= $product->showImage(['name'=>$image->name, 'type'=>'lg']) ?>" alt="">    
+                        <img src="<?= $product->showImage(['name'=>$image->name, 'type'=>'lg']) ?>" alt="">
                     <?php endforeach ?>
                 </div>
             </div>
