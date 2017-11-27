@@ -10,6 +10,8 @@
     $this->title  = $product->getTitle();
  ?>
 
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a1c43453ab783001260559b&product=inline-share-buttons"></script>
+
 <div class="container-fluid">
     <div class="nk-portfolio-single nk-portfolio-single-half" itemscope itemtype="https://schema.org/Product">
         <meta itemprop="url" content="<?= Url::to(['shop/product', 'id'=>$product->id, 'slug'=>$product->slug], true) ?>">
@@ -55,9 +57,11 @@
                             <tr>
                                 <td><strong>Share:</strong></td>
                                 <td>
-                                    <a href="#" title="Share page on Facebook" data-share="facebook">Facebook</a>,
-                                    <a href="#" title="Share page on Twitter" data-share="twitter">Twitter</a>,
-                                    <a href="#" title="Share page on Pinterest" data-share="pinterest">Pinterest</a>
+                                    <div class="sharethis-inline-share-buttons"></div>
+                                    <!-- <a href="#" title="Share page on Facebook" data-share="facebook">Facebook</a>, -->
+                                    <!-- <a href="#" title="Share page on Twitter" data-share="twitter">Twitter</a>, -->
+                                    <!-- <a href="#" title="Share page on Pinterest" data-share="pinterest">Pinterest</a> -->
+                                    
                                 </td>
                             </tr>                            
                         </table>
