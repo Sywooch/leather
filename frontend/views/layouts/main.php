@@ -20,6 +20,16 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i%7cWork+Sans:400,500,700" rel="stylesheet" type="text/css">
     <?php $this->head() ?>
+
+    <meta property="og:url" content="http://diano.store/"  />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="<?= Yii::$app->language ?>" />
+    <meta property="og:title" content="<?= Html::encode($this->title) ?>" />
+    <meta property="og:description" content="We are a collaboration of handmade crafters based in Ukraine. Our team has a great experience in creating handmade covers, wallets, cards and keys holders from high-quality leather. We can create products according to your design with custom engraving." />
+    <meta property="og:image" content="http://diano.store/images/common/1.jpg" />
+    <meta property="og:site_name" content="Diano Crafts" />
+
+
 </head>
 <body>
 <?php $this->beginBody() ?>
