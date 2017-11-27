@@ -12,6 +12,7 @@
 
 <div class="container-fluid">
     <div class="nk-portfolio-single nk-portfolio-single-half" itemscope itemtype="https://schema.org/Product">
+        <meta itemprop="url" content="<?= Url::to(['shop/product', 'id'=>$product->id, 'slug'=>$product->slug], true) ?>">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="nk-portfolio-images">
@@ -20,11 +21,12 @@
                     <?php endforeach ?>
                 </div>
             </div>
+            <span itemprop="name"><?= $product->getTitle() ?></span>
             <span itemscope itemtype="https://schema.org/Offer">
                 <meta itemprop="price" content="<?= $product->getPrice() ?>">
                 <meta itemprop="priceCurrency" content="USD">
                 <meta itemprop="name" content="<?= $product->getTitle() ?>">
-                <meta itemprop="image" content="<?= $product->showImage($product->mainImage->name, 'md') ?>">
+                <meta itemprop="image" content="<?= $product->showImage(['name'=>$product->mainImage->name, 'type'=>'md']) ?>">
                 <meta itemprop="availability" content="InStock">
             </span>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
